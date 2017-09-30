@@ -1,0 +1,3 @@
+# Must requirements
+apistar==0.3.6
+google-api-python-client==1.6.4

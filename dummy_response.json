@@ -1,0 +1,35 @@
+[
+    {
+        "kind": "youtube#searchResult",
+        "etag": "dummy",
+        "id": {
+            "kind": "youtube#video",
+            "videoId": "dummy"
+        },
+        "snippet": {
+            "publishedAt": "2017-09-30T00:00:00.000Z",
+            "channelId": "dummy",
+            "title": "dummy response",
+            "channelTitle": "dummy",
+            "description": "This is dummy data",
+            "liveBroadcastContent": "none",
+            "thumbnails": {
+                "default": {
+                    "height": 90,
+                    "url": "https://dummy.jpg",
+                    "width": 120
+                },
+                "high": {
+                    "height": 360,
+                    "url": "https://dummy.jpg",
+                    "width": 480
+                },
+                "medium": {
+                    "height": 180,
+                    "url": "https://dummy.jpg",
+                    "width": 320
+                }
+            }
+        }
+    }
+]
