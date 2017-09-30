@@ -6,8 +6,8 @@ from apistar import typesystem
 from youtube_client import Client
 
 # dummy youtube data api response
-f = open('dummy_response.json', 'r')
-dummy_response = json.load(f)
+# f = open('dummy_response.json', 'r')
+# dummy_response = json.load(f)
 
 class Query(typesystem.String):
     min_length = 1
@@ -23,12 +23,12 @@ def welcome(name=None):
 
 def search_video(query: Query, order_by: Order):
     if query is None:
-        return 'query is empty!'
+        return {'message': 'query is empty!'}
     else:
-        # videos = Client().search(query, order_by)
+        videos = Client().search(query, order_by)
 
-        # return videos
-        return dummy_response
+        return videos
+        # return dummy_response
 
 routes = [
     Route('/', 'GET', welcome),
