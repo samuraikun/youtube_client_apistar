@@ -4,14 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
   <link href="/static/css/index.css" rel="stylesheet" type="text/css" media="all">
-  <title>YouTube Star</title>
+  <title>ASMR Star</title>
 </head>
 <body>
-  <div id="app">
-    <h1>[[ message ]]</h1>
+  <div class="container" id="app">
+    <section class="callout secondary">
+      <h3 class="text-center">[[ message ]]</h3>
+      <form>
+        <div class="row">
+          <div class="large-3 columns text-center">
+            <input v-model="query" placeholder="キーワードを入力">
+            <select name="order_by" v-model="order_by">
+              <option disabled value="">Please select one</option>
+              <option value="date">date</option>
+              <option value="rating">rating</option>
+              <option value="relevance">relevance</option>
+              <option value="title">title</option>
+              <option value="videoCount">videoCount</option>
+              <option value="viewCount">viewCount</option>
+            </select>
+            <a @click="search_video" class="button expanded">Search</a>
+          </div>
+        </div>
+      </form>
+    </sction>
+    <div class="columns large-3 medium-6" v-for="result in results">
+      <div class="card">
+        <div class="card-divider">
+          [[ result.snippet.title ]]
+        </div>
+        <img :src="result.snippet.thumbnails.high.url">
+        <div class="card-section">
+          <p>[[ result.snippet.description ]].</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
 </html>

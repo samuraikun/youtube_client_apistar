@@ -14,9 +14,11 @@ from youtube_client import Client
 class Query(typesystem.String):
     min_length = 1
     max_length = 250
+    description = '検索キーワードを指定'
 
 class Order(typesystem.Enum):
     enum = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount']
+    description = '指定した順番で、検索結果を取得します'
 
 @annotate(renderers=[HTMLRenderer()])
 def welcome(username: str, templates: Templates):
