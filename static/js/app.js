@@ -2,7 +2,7 @@ const app = new Vue({
   el: '#app',
   delimiters: ["[[", "]]"],
   data: {
-    message: 'ASMR Star',
+    message: 'YouTube Client',
     query: '',
     order_by: '',
     results: []

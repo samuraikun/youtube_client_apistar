@@ -14,7 +14,6 @@ YOUTUBE_API_VERSION = "v3"
 class Client(object):
     def search(self, query, order_by):
         youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-        videos = []
 
         try:
             search_response = youtube.search().list(
@@ -25,9 +24,7 @@ class Client(object):
                 order=order_by
             ).execute()
 
-            [videos.append(search_result) for search_result in search_response.get('items', [])]
+            return [search_result for search_result in search_response.get('items', [])]
         except HttpError as e:
             print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
             raise e
-
-        return videos
