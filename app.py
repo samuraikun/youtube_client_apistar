@@ -5,7 +5,8 @@ from apistar.renderers import HTMLRenderer
 from apistar.frameworks.wsgi import WSGIApp as App
 from apistar.handlers import docs_urls, static_urls
 from apistar import typesystem
-from youtube_client import Client
+from youtube_client import YouTubeClient
+from twitter_client import TwitterClient
 
 # dummy youtube data api response
 # f = open('dummy_response.json', 'r')
@@ -29,14 +30,23 @@ def search_video(query: Query, order_by: Order):
     if query is None:
         return {'message': 'query is empty!'}
     else:
-        videos = Client().search(query, order_by)
+        videos = YouTubeClient().search(query, order_by)
 
         return videos
         # return dummy_response
 
+def get_twitter_user(query: Query):
+    if query is None:
+        return {'message': 'query is empty!'}
+    else:
+        user = TwitterClient().api().get_user(query)
+
+        return user.screen_name
+
 routes = [
     Route('/', 'GET', welcome),
     Route('/search', 'GET', search_video),
+    Route('/get_user', 'GET', get_twitter_user),
     Include('/docs', docs_urls),
     Include('/static', static_urls)
 ]

@@ -7,11 +7,11 @@ import settings
 # tab of
 #   https://cloud.google.com/console
 # Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = settings.API_KEY
+DEVELOPER_KEY = settings.YOUTUBE_API_KEY
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
-class Client(object):
+class YouTubeClient(object):
     def search(self, query, order_by):
         youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 
@@ -20,7 +20,7 @@ class Client(object):
                 q=query,
                 part='id,snippet',
                 type='video',
-                maxResults=25,
+                maxResults=50,
                 order=order_by
             ).execute()
 
